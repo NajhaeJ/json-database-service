@@ -6,7 +6,7 @@ user_records = dict()
 
 @app.route("/send_user_data", methods=["POST"])
 def handle_send_user_data():
-    data = request.get_json()
+    data = request.get_json(silent=True)
     if not data:
         return jsonify({"error": "POST body could not be parsed as json"}), 400
     if "key" not in data:
@@ -20,7 +20,7 @@ def handle_send_user_data():
 
 @app.route("/get_user_data", methods=["POST"])
 def handle_get_user_data():
-    data = request.get_json()
+    data = request.get_json(silent=True)
 
     if not data:
         return jsonify({"error": "POST body could not be parsed as json"}), 400
